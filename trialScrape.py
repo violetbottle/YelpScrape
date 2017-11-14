@@ -14,6 +14,7 @@ import requests
 import os
 
 def getID(review):
+	#get business ID
     links_container = review.find("a",{"class":"biz-name js-analytics-click"})
     link = links_container.get('href',' ')
     urlName=re.findall('((?<=\/)[^\/?]*(?=[^\/]*$))',link)
@@ -31,8 +32,10 @@ def reviewCount(review):
 def getHTML(ReviewID,Count):
     check=str(ReviewID).strip("['")
     check=check.strip("']")
+	#creating directory with business ID
     if not os.path.exists('F:/Fall 17/webAnalytics/Queens/' + check):
                 os.makedirs('F:/Fall 17/webAnalytics/Queens/' + check)
+		#change directory to store html files
     os.chdir('F:/Fall 17/webAnalytics/Queens/' + check)
     y=0
     p=0
